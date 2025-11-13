@@ -1,57 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ludens Interactive</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <!-- Asegúrate de que assets/style.css exista en la carpeta assets -->
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="assets/logo.png" alt="Ludens Interactive Logo">
-      <h1>Ludens Interactive</h1>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Ludens Interactive logo" class="logo">
+      <div>
+        <h1>Ludens Interactive</h1>
+        <div class="tag">Futuristic Game & Learning Hub</div>
+      </div>
     </div>
-    <div class="settings">
-      <button id="settingsBtn">⚙️</button>
-    </div>
+    <nav>
+      <button id="btnCatalog" class="navbtn">Catálogo</button>
+      <button id="btnSettings" class="navbtn gear">⚙️</button>
+      <div id="userArea" class="userArea"></div>
+    </nav>
   </header>
 
   <main>
-    <section class="catalogo">
-      <h2>Catálogo de Juegos</h2>
-      <div class="juegos">
-        <div class="juego">
-          <img src="assets/final_sentence.jpg" alt="Final Sentence">
-          <h3>Final Sentence</h3>
-          <p>Juego de mecanografía narrativa.</p>
-          <span class="precio">S/15.00</span>
-        </div>
-        <div class="juego">
-          <img src="assets/elysium_odyssey.jpg" alt="Elysium Odyssey">
-          <h3>Elysium Odyssey</h3>
-          <p>Aventura RPG futurista.</p>
-          <span class="precio">S/25.00</span>
-        </div>
-        <div class="juego">
-          <img src="assets/chrono_racer.jpg" alt="Chrono Racer">
-          <h3>Chrono Racer</h3>
-          <p>Carreras en el tiempo.</p>
-          <span class="precio">S/18.00</span>
-        </div>
-      </div>
+    <section class="catalog" id="catalog">
+      <!-- JS inyecta cartas aquí -->
     </section>
   </main>
 
-  <div id="settingsMenu" class="hidden">
+  <aside id="settingsPanel" class="settingsPanel" style="display:none;">
     <h2>Ajustes</h2>
-    <button id="cuentaBtn">Cuenta</button>
-    <button id="vipBtn">VIP</button>
-    <button id="creditosBtn">Créditos</button>
-    <button id="cerrarAjustes">Cerrar</button>
-  </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="account">Cuenta</button>
+      <button class="tab" data-tab="vip">VIP</button>
+      <button class="tab" data-tab="credits">Créditos</button>
+    </div>
 
-  <div id="modal" class="hidden"></div>
+    <div id="tab-account" class="panel">
+      <h3>Cuenta</h3>
+      <div id="logged" style="display:none;">
+        <p>Sesión: <strong id="loggedUser"></strong></p>
+        <button id="logoutBtn" class="btn">Cerrar sesión</button>
+      </div>
+      <div id="formAccount">
+        <input id="accName" placeholder="Nombre de usuario" />
+        <input id="accEmail" placeholder="Correo electrónico" />
+        <input id="accPass" type="password" placeholder="Contraseña" />
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button id="createBtn" class="btn primary">Crear cuenta</button>
+          <button id="loginBtn" class="btn">Iniciar sesión</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-vip" class="panel" style="display:none;">
+      <h3>VIP</h3>
+      <p id="vipInfo">No activo</p>
+      <button id="buyVip" class="btn primary">Comprar VIP (demo)</button>
+    </div>
+
+    <div id="tab-credits" class="panel" style="display:none;">
+      <h3>Créditos</h3>
+      <p>Yamil Calsin<br>Roberto Pariona<br>ChatGPT</p>
+    </div>
+  </aside>
 
   <script src="assets/script.js"></script>
 </body>

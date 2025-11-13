@@ -1,161 +1,58 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LudensWorks — Tu Mundo de Juegos</title>
-  <style>
-    :root{--accent:#ff6b35;--accent-2:#ffb627;--bg:#f8fafc;--card:#ffffff;--muted:#6b7280}
-    *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#edf2f7);color:#0f172a}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    .logo svg{width:36px;height:36px}
-    h1{margin:0;font-size:18px}
-    .tag{font-size:12px;color:var(--muted)}
-    nav{display:flex;gap:12px;align-items:center}
-    button.primary{background:var(--accent);color:white;border:0;padding:10px 14px;border-radius:8px;cursor:pointer}
-    button.icon{background:transparent;border:none;cursor:pointer}
-
-    main{display:grid;grid-template-columns:1fr 420px;gap:22px;padding:22px}
-
-    .workspace{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(11,14,20,0.04)}
-    .catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .item{background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(10,15,20,0.03);display:flex;flex-direction:column;gap:8px}
-    .item h4{margin:0;font-size:14px}
-    .price{font-weight:700;color:var(--accent)}
-    .discount{font-size:12px;color:green}
-    .item button{margin-top:auto}
-
-    .settings-panel{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 4px 12px rgba(11,14,20,0.04);position:fixed;top:80px;right:28px;width:340px;display:none;flex-direction:column;gap:12px;z-index:100}
-    .input{padding:8px;border-radius:8px;border:1px solid rgba(10,15,20,0.06)}
-    .small{font-size:13px;color:var(--muted)}
-
-    footer{padding:18px;border-top:1px solid rgba(15,23,42,0.04);display:flex;justify-content:space-between;align-items:center}
-    .credits{font-size:13px;color:var(--muted)}
-
-    @media(max-width:980px){main{grid-template-columns:1fr}}
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ludens Interactive</title>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
   <header>
-    <div class="brand">
-      <div class="logo">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="18" height="18" rx="4" fill="rgba(255,255,255,0.2)"/>
-          <path d="M8 10h2v2H8zM14 10h2v2h-2zM6 14h12v2H6z" fill="white"/>
-        </svg>
-      </div>
-      <div>
-        <h1>LudensWorks</h1>
-        <div class="tag">Tu mundo de juegos y aprendizaje</div>
-      </div>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Ludens Interactive Logo">
+      <h1>Ludens Interactive</h1>
     </div>
-
-    <nav>
-      <button class="icon" id="btn-settings">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .69.4 1.31 1.01 1.62.19.1.4.16.62.18H21a2 2 0 0 1 0 4h-.09c-.22.02-.43.08-.62.18-.61.31-1.01.93-1.01 1.62z"/></svg>
-      </button>
-      <button class="primary" id="btn-start">Jugar ahora</button>
-    </nav>
+    <div class="settings">
+      <button id="settingsBtn">⚙️</button>
+    </div>
   </header>
 
   <main>
-    <section class="workspace">
-      <h2>🎮 Catálogo de Juegos</h2>
-      <p class="small">Descubre nuestros juegos más populares y educativos.</p>
-      <div class="catalog" id="catalog"></div>
+    <section class="catalogo">
+      <h2>Catálogo de Juegos</h2>
+      <div class="juegos">
+        <div class="juego">
+          <img src="assets/final_sentence.jpg" alt="Final Sentence">
+          <h3>Final Sentence</h3>
+          <p>Juego de mecanografía narrativa.</p>
+          <span class="precio">S/15.00</span>
+        </div>
+        <div class="juego">
+          <img src="assets/elysium_odyssey.jpg" alt="Elysium Odyssey">
+          <h3>Elysium Odyssey</h3>
+          <p>Aventura RPG futurista.</p>
+          <span class="precio">S/25.00</span>
+        </div>
+        <div class="juego">
+          <img src="assets/chrono_racer.jpg" alt="Chrono Racer">
+          <h3>Chrono Racer</h3>
+          <p>Carreras en el tiempo.</p>
+          <span class="precio">S/18.00</span>
+        </div>
+      </div>
     </section>
   </main>
 
-  <div class="settings-panel" id="settingsPanel">
-    <h3>Cuenta</h3>
-    <input id="accUser" class="input" placeholder="Usuario" />
-    <input id="accPass" class="input" placeholder="Contraseña" type="password" />
-    <label class="small"><input type="checkbox" id="accVip" /> Activar Servicio VIP (Premium)</label>
-    <div style="display:flex;gap:8px">
-      <button class="primary" id="btn-create">Crear cuenta</button>
-      <button class="ghost" id="btn-loginLocal">Iniciar sesión</button>
-    </div>
-
-    <div id="vipBenefits" style="display:none;">
-      <h4>Beneficios VIP</h4>
-      <ul class="small">
-        <li>Descuento del 50% en todos los juegos pagos</li>
-        <li>Acceso anticipado a lanzamientos</li>
-        <li>Código exclusivo: <strong id="vipCode"></strong></li>
-      </ul>
-    </div>
-
-    <hr style="margin:8px 0;border:none;border-top:1px solid rgba(10,15,20,0.05)" />
-
-    <h3>Créditos</h3>
-    <div class="credits">
-      <div>Yamil Calsin</div>
-      <div>Roberto Pariona</div>
-      <div>ChatGPT</div>
-    </div>
+  <div id="settingsMenu" class="hidden">
+    <h2>Ajustes</h2>
+    <button id="cuentaBtn">Cuenta</button>
+    <button id="vipBtn">VIP</button>
+    <button id="creditosBtn">Créditos</button>
+    <button id="cerrarAjustes">Cerrar</button>
   </div>
 
-  <footer>
-    <div class="small">© LudensWorks 2025</div>
-    <div class="small">Plataforma educativa de juegos sobre comunicación</div>
-  </footer>
+  <div id="modal" class="hidden"></div>
 
-  <script>
-    const catalog = [
-      {id:1,title:'Final Sentence (demo)',desc:'Demuestra tu precisión escribiendo frases literarias sin errores.',price:0,link:'#finalsentence'},
-      {id:2,title:'Minecraft',desc:'Crea tu mundo y explora tu imaginación.',price:25,link:'#'},
-      {id:3,title:'Among Us',desc:'Descubre al impostor en esta experiencia social.',price:5,link:'#'},
-      {id:4,title:'Celeste',desc:'Supera desafíos mientras escalas una montaña.',price:15,link:'#'},
-      {id:5,title:'Stardew Valley',desc:'Construye tu granja y crea tu historia.',price:10,link:'#'},
-      {id:6,title:'Hollow Knight',desc:'Explora el misterioso reino de Hallownest.',price:20,link:'#'}
-    ];
-
-    const catalogEl = document.getElementById('catalog');
-    const vipCheckbox=document.getElementById('accVip');
-    const vipPanel=document.getElementById('vipBenefits');
-    const vipCode=document.getElementById('vipCode');
-
-    function renderCatalog(isVip=false){
-      catalogEl.innerHTML='';
-      catalog.forEach(g=>{
-        let priceText=g.price===0?'Gratis':`$${g.price}`;
-        let discount='';
-        if(isVip && g.price>0){
-          const newPrice=(g.price*0.5).toFixed(2);
-          discount=`<div class='discount'>VIP: $${newPrice}</div>`;
-        }
-        const div=document.createElement('div');
-        div.className='item';
-        div.innerHTML=`<h4>${g.title}</h4><div class='small'>${g.desc}</div><div class='price'>${priceText}</div>${discount}<a href='${g.link}'><button class='primary'>Abrir</button></a>`;
-        catalogEl.appendChild(div);
-      });
-    }
-
-    vipCheckbox.addEventListener('change',()=>{
-      if(vipCheckbox.checked){
-        vipPanel.style.display='block';
-        const code='VIP-'+Math.random().toString(36).substring(2,8).toUpperCase();
-        vipCode.textContent=code;
-        renderCatalog(true);
-      } else {
-        vipPanel.style.display='none';
-        renderCatalog(false);
-      }
-    });
-
-    renderCatalog();
-
-    const settingsPanel=document.getElementById('settingsPanel');
-    const btnSettings=document.getElementById('btn-settings');
-    let open=false;
-    btnSettings.addEventListener('click',()=>{
-      open=!open;
-      settingsPanel.style.display=open?'flex':'none';
-    });
-  </script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
